@@ -9,6 +9,8 @@ import {
   sqliteTableCreator,
   text,
 } from "drizzle-orm/sqlite-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -46,3 +48,5 @@ export const todos = createTable("todos", {
   ),
   doneAt: int("done_at", { mode: "timestamp" }),
 });
+
+export const todosSchema = createInsertSchema(todos);
